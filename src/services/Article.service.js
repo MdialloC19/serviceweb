@@ -11,15 +11,26 @@ const createArticle = async (data) => {
   }
 };
 
-// Récupérer tous les articles
 const getAllArticles = async () => {
   try {
-    const articles = await Article.find();
+    const articles = await Article.find({ isDeleted: false }).populate(
+      "categorie"
+    );
     return articles;
   } catch (error) {
     throw new Error(error.message);
   }
 };
+
+// Récupérer tous les articles
+// const getAllArticles = async () => {
+//   try {
+//     const articles = await Article.find();
+//     return articles;
+//   } catch (error) {
+//     throw new Error(error.message);
+//   }
+// };
 
 // Récupérer un article par ID
 const getArticleById = async (id) => {

@@ -4,6 +4,7 @@ const articleController = require("../controllers/Article.controller");
 // const { validateCategoryParam } = require("../validators/categoryValidators");
 const { param } = require("express-validator");
 
+router.get("/", articleController.getAllArticles);
 router.get(
   "/categories/:categorie",
   [param("categorie", "Category is required").not().isEmpty()],
@@ -21,15 +22,11 @@ router.post(
   articleController.createArticle
 );
 
-router.put(
-  "/categories/:category/articles/:id",
-  [param("categorie", "Category is required").not().isEmpty()],
-  articleController.updateArticle
-);
+router.put("/:id", articleController.updateArticle);
 
 router.delete(
-  "/categories/:category/articles/:id",
-  [param("categorie", "Category is required").not().isEmpty()],
+  "/:id",
+  // [param("categorie", "Category is required").not().isEmpty()],
   articleController.deleteArticle
 );
 

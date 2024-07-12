@@ -26,6 +26,16 @@ exports.createArticle = async (req, res) => {
     });
   }
 };
+
+exports.getAllArticles = async (req, res) => {
+  try {
+    const articles = await articleService.getAllArticles();
+    res.status(200).json(articles);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 // Get all articles by category
 exports.getAllArticlesByCategory = async (req, res) => {
   try {
