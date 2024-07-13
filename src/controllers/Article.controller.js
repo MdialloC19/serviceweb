@@ -66,7 +66,10 @@ exports.getArticleById = async (req, res) => {
 // Update an article by ID
 exports.updateArticle = async (req, res) => {
   try {
-    const article = await articleService.updateArticle(req.params.id, req.body);
+    const id = req.params.id;
+    const data = req.body;
+    console.log(id, data);
+    const article = await articleService.updateArticle(id, data);
     if (!article) {
       return res
         .status(404)
@@ -74,6 +77,7 @@ exports.updateArticle = async (req, res) => {
     }
     res.status(200).json({ success: true, data: article });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, errors: [{ msg: error.message }] });
   }
 };

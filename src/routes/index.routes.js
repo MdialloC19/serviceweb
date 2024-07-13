@@ -4,6 +4,6 @@ const articleRoutes = require("./Article.routes");
 const categorieRoutes = require("./Categorie.routes");
 
 router.use("/articles", articleRoutes);
-router.use("/categorie", categorieRoutes);
+router.use("/categories", categorieRoutes);
 
 module.exports = router;

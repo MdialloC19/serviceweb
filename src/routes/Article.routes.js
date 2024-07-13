@@ -12,13 +12,13 @@ router.get(
 );
 
 router.get(
-  "/categories/:categorie/articles/:id",
+  "/:id",
   [param("categorie", "Category is required").not().isEmpty()],
   articleController.getArticleById
 );
 router.post(
-  "/categories/:categorie",
-  [param("categorie", "Category is required").not().isEmpty()],
+  "/:categorie",
+  // [param("categorie", "Category is required").not().isEmpty()],
   articleController.createArticle
 );
 
